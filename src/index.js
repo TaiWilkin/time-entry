@@ -11,10 +11,10 @@ const app = express();
 app.use(
   '/api',
   proxy('http://react-ssr-api.herokuapp.com', {
-    proxyReqOptDecorator(opts) {
-      opts.headers['x-forwarded-host'] = 'localhost:3000';
-      return opts;
-    }
+    // proxyReqOptDecorator(opts) {
+    //   opts.headers['x-forwarded-host'] = 'localhost:3000';
+    //   return opts;
+    // }
 }));
 app.use(express.static('public'));
 app.get('*', (req, res) => {
