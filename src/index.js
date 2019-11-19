@@ -8,7 +8,7 @@ import Routes from './client/Routes';
 
 const app = express();
 
-const url = (process.env.NODE_ENV === 'production') ? 'https://radiant-inlet-61324.herokuapp.com/' : 'localhost:3000';
+const url = (process.env.NODE_ENV === 'production') ? 'radiant-inlet-61324.herokuapp.com' : 'localhost:3000';
 
 app.use(
   '/api',
