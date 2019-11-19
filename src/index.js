@@ -8,13 +8,15 @@ import Routes from './client/Routes';
 
 const app = express();
 
+const url = (process.env.NODE_ENV === 'production') ? 'https://radiant-inlet-61324.herokuapp.com/' : 'localhost:3000';
+
 app.use(
   '/api',
   proxy('http://react-ssr-api.herokuapp.com', {
-    // proxyReqOptDecorator(opts) {
-    //   opts.headers['x-forwarded-host'] = 'localhost:3000';
-    //   return opts;
-    // }
+    proxyReqOptDecorator(opts) {
+      opts.headers['x-forwarded-host'] = url;
+      return opts;
+    }
 }));
 app.use(express.static('public'));
 app.get('*', (req, res) => {
