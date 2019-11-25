@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { signin } from '../actions';
 import requireNoAuth from '../components/hocs/requireNoAuth';
 
@@ -17,9 +18,19 @@ class LoginPage extends Component {
     this.props.signin(this.state);
   }
 
+  head() {
+    return (
+      <Helmet>
+        <title>Entries App: Login</title>
+        <meta property="og:title" content="Entries App: Login" />
+      </Helmet>
+    );
+  }
+
   render() {
     return (
       <div className="container">
+        {this.head()}
         <label>
           Username:
           <input
