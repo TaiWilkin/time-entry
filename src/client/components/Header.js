@@ -1,22 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { signout } from '../actions';
 
-const Header = ({ auth }) => {
-  console.log('My auth status is', auth);
+const Header = ({ auth, signout }) => {
   const authButton = auth ? (
-    <a href="/api/logout">Logout</a>
+    <button onClick={() => signout()}>Logout</button>
   ) : (
-    <a href="/api/auth/google">Login</a>
+    <Link to="/login">Login</Link>
   );
 
   return (
     <nav>
       <div className="nav-wrapper">
-        <Link to="/" className="brand-logo">React SSR</Link>
+        <Link to="/" className="brand-logo">Time Entry App</Link>
         <ul className="right">
-          <li><Link to="/users">Users</Link></li>
-          <li><Link to="/admins">Admins</Link></li>
+          {auth && (
+            <li><Link to="/entries">Entries</Link></li>
+          )}
+          {auth && (
+            <li><Link to="/create">Create Entry</Link></li>
+          )}
           <li>{authButton}</li>
         </ul>
       </div>
@@ -28,4 +32,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { signout })(Header);

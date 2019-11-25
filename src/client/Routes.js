@@ -1,9 +1,11 @@
 import React from 'react';
 import HomePage from './pages/HomePage';
-import UsersListPage from './pages/UsersListPage';
+import EntriesPage from './pages/EntriesPage';
+import CreateEntryPage from './pages/CreateEntryPage';
 import App from './App';
 import NotFoundPage from './pages/NotFoundPage';
-import AdminsListPage from './pages/AdminsListPage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
 
 export default [
   {
@@ -15,12 +17,20 @@ export default [
         exact: true
       },
       {
-        ...UsersListPage,
-        path: "/users"
+        ...LoginPage,
+        path: "/login"
       },
       {
-        ...AdminsListPage,
-        path: "/admins"
+        ...SignupPage,
+        path: "/signup"
+      },
+      {
+        ...EntriesPage,
+        path: "/entries"
+      },
+      {
+        ...CreateEntryPage,
+        path: "/create"
       },
       {
         ...NotFoundPage

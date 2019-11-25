@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import usersReducer from './usersReducer';
+import entriesReducer from './entriesReducer';
 import authReducer from './authReducer';
 import adminsReducer from './adminsReducer';
 
 export default combineReducers({
-  users: usersReducer,
+  entries: entriesReducer,
   auth: authReducer,
   admins: adminsReducer
 });
